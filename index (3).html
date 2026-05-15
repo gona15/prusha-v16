@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArmanLeads — Dental Patient Marketing for Des Moines Practices</title>
+  <meta name="description" content="Targeted Meta ads that bring new patients to your Des Moines dental practice. Free audit, no contract, 30-day money-back guarantee. Run by Arman — direct, transparent, founded-client rate $697/month.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ──────────────────────────────────────────────────────── */
+    :root {
+      --bg:        #F4EFE6;
+      --bg-2:      #EAE3D2;
+      --bg-3:      #DDD5BC;
+      --text:      #1A1815;
+      --text-mid:  rgba(26,24,21,0.58);
+      --text-low:  rgba(26,24,21,0.34);
+      --accent:    #7A1F2B;
+      --accent-dk: #631727;
+      --border:    rgba(26,24,21,0.12);
+      --border-2:  rgba(26,24,21,0.07);
+
+      --ff-d: 'Fraunces', Georgia, serif;
+      --ff-b: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ff-m: 'JetBrains Mono', 'Courier New', monospace;
+
+      --r: 3px;
+      --pill: 9999px;
+      --nav-h: 56px;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-b);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── Type ────────────────────────────────────────────────────────── */
+    .mono {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .eyebrow { color: var(--text-mid); }
+
+    h1.d, h2.d {
+      font-family: var(--ff-d);
+      font-size: clamp(46px, 6.8vw, 80px);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+    }
+    h2.d-sm {
+      font-family: var(--ff-d);
+      font-size: clamp(30px, 4.2vw, 50px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+    .sub {
+      font-size: clamp(16px, 1.9vw, 19px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-mid);
+    }
+    .num {
+      font-feature-settings: 'tnum' 1, 'lnum' 1;
+      font-variant-numeric: tabular-nums lining-nums;
+    }
+
+    /* ─── Layout ──────────────────────────────────────────────────────── */
+    .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 36px; }
+    section { padding: 96px 0; }
+    .bg-2 { background: var(--bg-2); }
+    .bg-inv { background: var(--text); }
+    .rule { border: none; border-top: 1px solid var(--border); }
+
+    /* ─── Scroll animation ────────────────────────────────────────────── */
+    .rise {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 400ms ease-out, transform 400ms ease-out;
+    }
+    .rise.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .rise { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── Sticky nav ──────────────────────────────────────────────────── */
+    #sticky-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(244,239,230,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 280ms ease;
+    }
+    #sticky-nav.show { transform: translateY(0); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+    .nav-brand {
+      font-family: var(--ff-d);
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* ─── Buttons ─────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ff-b);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      padding: 13px 26px;
+      border-radius: var(--pill);
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: background 180ms ease, border-color 180ms ease;
+      white-space: nowrap;
+    }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .btn-pri { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .btn-pri:hover { background: var(--accent-dk); border-color: var(--accent-dk); }
+    .btn-sec { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn-sec:hover { border-color: rgba(26,24,21,0.26); }
+    .btn-inv { background: var(--bg); color: var(--text); border-color: var(--bg); }
+    .btn-inv:hover { background: #E5DFD3; border-color: #E5DFD3; }
+    .btn-sm { padding: 10px 20px; font-size: 13px; }
+
+    /* ═══════════════════════════════════════════════════════
+       §0  HERO
+    ═══════════════════════════════════════════════════════ */
+    #hero { padding: 76px 0 96px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    h1.d em { font-style: italic; color: var(--accent); }
+
+    .hero-sub {
+      margin-top: 20px;
+      font-size: clamp(16px, 1.8vw, 18px);
+      line-height: 1.75;
+      color: var(--text-mid);
+      max-width: 480px;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .hero-micro {
+      margin-top: 13px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-low);
+      line-height: 2.2;
+    }
+
+    /* Identity card — replaces bare photo placeholder */
+    .id-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .id-card-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--bg-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .id-card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .id-card-photo-label {
+      font-family: var(--ff-m);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-low);
+      text-align: center;
+      padding: 0 16px;
+    }
+    .id-card-foot {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 6px;
+    }
+    .id-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      color: var(--text-mid);
+    }
+    .id-row a { color: var(--accent); text-decoration: none; }
+    .id-row a:hover { text-decoration: underline; }
+    .id-row svg { flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════════════════════
+       §1  PROBLEM
+    ═══════════════════════════════════════════════════════ */
+    .prob-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .prob-list { list-style: none; margin-top: 30px; }
+    .prob-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 14px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .prob-list li:last-child { border-bottom: 1px solid var(--border); }
+    .pm { color: var(--accent); font-size: 11px; padding-top: 4px; }
+
+    .prob-aside { padding-top: 68px; }
+    .prob-pull {
+      margin-top: 40px;
+      padding-left: 20px;
+      border-left: 2px solid var(--accent);
+      font-family: var(--ff-d);
+      font-style: italic;
+      font-size: clamp(17px, 2.1vw, 23px);
+      font-weight: 300;
+      line-height: 1.48;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .cta-gap { margin-top: 40px; }
+
+    /* ═══════════════════════════════════════════════════════
+       §2  COST
+    ═══════════════════════════════════════════════════════ */
+    .cost-head { max-width: 680px; margin-bottom: 48px; }
+    .cost-head h2 { margin-top: 16px; }
+    .cost-head .sub { margin-top: 16px; }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .stat-cell { padding: 34px 28px; background: var(--bg); }
+    .stat-cell:nth-child(2) { background: var(--bg-2); }
+    .stat-big {
+      display: block;
+      font-family: var(--ff-d);
+      font-size: clamp(34px, 4.2vw, 52px);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .stat-label { font-size: 13px; line-height: 1.5; color: var(--text-mid); }
+
+    .math-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 36px;
+      max-width: 720px;
+    }
+    .math-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border-2);
+      font-size: 14px;
+      gap: 20px;
+    }
+    .math-row:last-child {
+      border-bottom: none;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      margin-top: 6px;
+    }
+    .math-label { color: var(--text-mid); flex: 1; }
+    .math-val { font-weight: 500; color: var(--text); white-space: nowrap; }
+    .math-row.total .math-label { font-weight: 500; color: var(--text); }
+    .math-row.total .math-val {
+      font-family: var(--ff-d);
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+    .cost-note {
+      margin-top: 14px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--text-low);
+      line-height: 1.9;
+      max-width: 680px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       §3  ARMAN / BIO
+    ═══════════════════════════════════════════════════════ */
+    .arman-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .arman-photo-col { position: sticky; top: calc(var(--nav-h) + 24px); }
+
+    .arman-id-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .arman-photo-box {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--bg-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-mid);
+      overflow: hidden;
+    }
+    .arman-photo-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .arman-card-foot {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 8px;
+    }
+    .arman-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      color: var(--text-mid);
+    }
+    .arman-row a { color: var(--accent); text-decoration: none; }
+    .arman-row a:hover { text-decoration: underline; }
+
+    .arman-body { margin-top: 26px; }
+    .arman-body p {
+      font-size: 15px;
+      line-height: 1.82;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .arman-body p:last-child { margin-bottom: 0; }
+    .arman-body strong { font-weight: 500; }
+    .arman-body a { color: var(--accent); }
+
+    .arman-quote {
+      margin: 28px 0;
+      padding: 20px 24px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r);
+      font-family: var(--ff-d);
+      font-style: italic;
+      font-size: clamp(15px, 1.7vw, 18px);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       §4  AUDIT PREVIEW (proof of work)
+    ═══════════════════════════════════════════════════════ */
+    .audit-head { max-width: 640px; margin-bottom: 44px; }
+    .audit-head h2 { margin-top: 16px; }
+
+    .audit-preview {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      max-width: 860px;
+    }
+    .audit-preview-header {
+      padding: 16px 24px;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .audit-preview-title {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .audit-preview-meta {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text-low);
+    }
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: var(--bg);
+    }
+    .audit-table th {
+      text-align: left;
+      padding: 12px 18px;
+      font-family: var(--ff-m);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-low);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+    .audit-table td {
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border-2);
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .audit-table tr:last-child td { border-bottom: none; }
+    .audit-table .td-kw { font-weight: 500; }
+    .audit-table .td-vol { color: var(--text-mid); font-family: var(--ff-m); font-size: 12px; }
+    .audit-gap-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-family: var(--ff-m);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .gap-hi { background: rgba(122,31,43,0.10); color: var(--accent); }
+    .gap-mid { background: rgba(26,24,21,0.07); color: var(--text-mid); }
+    .gap-lo { background: rgba(42,92,63,0.10); color: #2A5C3F; }
+
+    .audit-preview-foot {
+      padding: 14px 20px;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text-low);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .audit-note {
+      margin-top: 18px;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      max-width: 680px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       §5  TUESDAY SCENE
+    ═══════════════════════════════════════════════════════ */
+    .scene-head { max-width: 560px; margin-bottom: 36px; }
+    .scene-head h2 { margin-top: 16px; }
+
+    .scene {
+      padding: 36px 40px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r);
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+    .scene-time {
+      display: block;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .scene p {
+      font-family: var(--ff-d);
+      font-size: clamp(15px, 1.8vw, 19px);
+      font-weight: 300;
+      line-height: 1.72;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .del-list { list-style: none; }
+    .del-item {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 13px;
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .del-item:last-child { border-bottom: 1px solid var(--border); }
+    .da { color: var(--accent); font-size: 12px; padding-top: 2px; }
+
+    .result-aside p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       §6  FIT CHECK
+    ═══════════════════════════════════════════════════════ */
+    .fit-head { max-width: 580px; margin-bottom: 40px; }
+    .fit-head h2 { margin-top: 16px; }
+
+    .fit-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .fit-col { padding: 32px 30px; background: var(--bg-2); }
+    .fit-col:first-child { background: var(--bg); }
+    .fit-col-head {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+    .fit-list { list-style: none; }
+    .fit-list li {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-2);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .fit-list li:last-child { border-bottom: none; }
+    .fy { color: #2D6042; font-weight: 500; }
+    .fn { color: var(--text-low); }
+
+    /* ═══════════════════════════════════════════════════════
+       §7  PROCESS
+    ═══════════════════════════════════════════════════════ */
+    .proc-head { max-width: 580px; margin-bottom: 48px; }
+    .proc-head h2 { margin-top: 16px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .step { padding: 32px 24px; background: var(--bg); }
+    .step:nth-child(even) { background: var(--bg-2); }
+    .step-num {
+      display: block;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-family: var(--ff-d);
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .step p { font-size: 13px; line-height: 1.7; color: var(--text-mid); }
+
+    /* ═══════════════════════════════════════════════════════
+       §8  OBJECTIONS
+    ═══════════════════════════════════════════════════════ */
+    .obj-head { max-width: 580px; margin-bottom: 40px; }
+    .obj-head h2 { margin-top: 16px; }
+
+    .obj-list { max-width: 800px; }
+    .obj { padding: 32px 0; border-top: 1px solid var(--border); }
+    .obj:last-child { border-bottom: 1px solid var(--border); }
+    .obj h3 {
+      font-family: var(--ff-d);
+      font-size: clamp(16px, 1.9vw, 20px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .obj p { font-size: 14px; line-height: 1.82; color: var(--text-mid); max-width: 660px; }
+    .obj p strong { color: var(--text); font-weight: 500; }
+
+    /* ═══════════════════════════════════════════════════════
+       §9  PRICING
+    ═══════════════════════════════════════════════════════ */
+    .price-head { max-width: 540px; margin-bottom: 48px; }
+    .price-head h2 { margin-top: 16px; }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .price-hd {
+      padding: 28px 32px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .price-ey {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .price-line { display: flex; align-items: baseline; gap: 3px; margin-bottom: 4px; }
+    .price-cur { font-family: var(--ff-d); font-size: 20px; font-weight: 300; color: var(--text-mid); }
+    .price-amt {
+      font-family: var(--ff-d);
+      font-size: clamp(48px, 6.5vw, 66px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .price-per { font-size: 14px; color: var(--text-mid); margin-left: 4px; }
+    .price-was { font-size: 12px; color: var(--text-low); text-decoration: line-through; }
+
+    .price-body { padding: 28px 32px; }
+    .price-lines { list-style: none; margin-bottom: 24px; }
+    .price-lines li {
+      display: grid;
+      grid-template-columns: 14px 1fr auto;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-2);
+      font-size: 13px;
+      align-items: baseline;
+    }
+    .price-lines li:last-child { border-bottom: none; }
+    .pm2 { color: var(--accent); font-size: 11px; }
+    .pl { color: var(--text); }
+    .pv { color: var(--text-mid); font-size: 12px; text-align: right; }
+
+    .loss-box {
+      padding: 16px 18px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 22px;
+    }
+    .loss-box strong { color: var(--text); font-weight: 500; }
+
+    .price-micro {
+      margin-top: 12px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-low);
+      line-height: 2.2;
+    }
+
+    /* Guarantee stamp — circular SVG */
+    .guarantee-wrap { display: flex; flex-direction: column; gap: 16px; }
+
+    .stamp-outer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg);
+    }
+    .stamp-svg {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+    }
+    .stamp-inner-text { text-anchor: middle; dominant-baseline: central; }
+
+    .stripe-box {
+      padding: 15px 18px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .stripe-box strong { color: var(--text); font-weight: 500; }
+    .sm { color: var(--accent); flex-shrink: 0; font-size: 13px; padding-top: 1px; }
+
+    .ad-note {
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+    }
+    .ad-note p { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+    .ad-note strong { color: var(--text); font-weight: 500; }
+
+    /* ═══════════════════════════════════════════════════════
+       §10  FOUNDING
+    ═══════════════════════════════════════════════════════ */
+    .founding-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    #founding .mono { color: rgba(244,239,230,0.40); }
+    #founding h2 { color: var(--bg); }
+
+    .founding-body { margin-top: 24px; }
+    .founding-body p {
+      font-size: 15px;
+      line-height: 1.82;
+      color: rgba(244,239,230,0.68);
+      margin-bottom: 16px;
+    }
+
+    .founding-offer {
+      margin-top: 28px;
+      padding: 26px 28px;
+      border: 1px solid rgba(244,239,230,0.13);
+      border-radius: var(--r);
+    }
+    .founding-list { list-style: none; margin-bottom: 24px; }
+    .founding-list li {
+      display: grid;
+      grid-template-columns: 15px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(244,239,230,0.08);
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(244,239,230,0.78);
+    }
+    .founding-list li:last-child { border-bottom: none; }
+    .fm { color: rgba(244,239,230,0.40); font-size: 11px; }
+
+    .founding-aside { padding-top: 72px; }
+
+    /* Spots remaining — visual badge */
+    .spots-badge {
+      border: 1px solid rgba(244,239,230,0.13);
+      border-radius: var(--r);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .spots-ring {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 18px;
+    }
+    .spots-num {
+      display: block;
+      font-family: var(--ff-d);
+      font-size: 72px;
+      font-weight: 300;
+      letter-spacing: -0.035em;
+      color: var(--bg);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .spots-label {
+      display: block;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.42);
+      margin-bottom: 18px;
+    }
+    .spots-badge p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(244,239,230,0.56);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       §11  FORM
+    ═══════════════════════════════════════════════════════ */
+    .form-head { max-width: 600px; margin-bottom: 48px; }
+    .form-head h2 { margin-top: 16px; }
+    .form-head .sub { margin-top: 16px; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+    }
+    .opt-tag {
+      font-family: var(--ff-m);
+      font-size: 9px;
+      letter-spacing: 0.09em;
+      color: var(--text-low);
+      margin-left: 8px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 15px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-family: var(--ff-b);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 180ms ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input::placeholder { color: var(--text-low); }
+    .form-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(122,31,43,0.10);
+    }
+    .form-input.opt { opacity: 0.65; }
+
+    .form-foot { margin-top: 22px; }
+    .form-micro {
+      margin-top: 11px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-low);
+      line-height: 2.2;
+    }
+
+    /* "What happens next" timeline */
+    .next-timeline { margin-bottom: 28px; }
+    .next-step {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-2);
+    }
+    .next-step:last-child { border-bottom: none; }
+    .next-num {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      width: 20px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .next-text { font-size: 13px; line-height: 1.65; color: var(--text-mid); }
+    .next-text strong { color: var(--text); font-weight: 500; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .divider-line { flex: 1; border-top: 1px solid var(--border); }
+    .divider-label {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-low);
+    }
+
+    .call-box {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg);
+    }
+    .call-box h3 {
+      font-family: var(--ff-d);
+      font-size: 19px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .call-box p { font-size: 13px; line-height: 1.7; color: var(--text-mid); margin-bottom: 16px; }
+    .call-note {
+      margin-top: 9px;
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-low);
+    }
+
+    .email-box {
+      margin-top: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+    }
+    .ebox-label { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+    .email-box a { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .email-box a:hover { text-decoration: underline; }
+    .ebox-note { margin-top: 5px; font-size: 12px; color: var(--text-mid); }
+
+    /* ─── Footer ──────────────────────────────────────────────────────── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .foot-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .foot-brand {
+      font-family: var(--ff-d);
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .foot-nav { display: flex; align-items: center; gap: 20px; }
+    .foot-nav a {
+      font-family: var(--ff-m);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+    .foot-nav a:hover { color: var(--text); }
+    .foot-copy { font-family: var(--ff-m); font-size: 10px; letter-spacing: 0.09em; color: var(--text-low); }
+
+    /* ─── Responsive ──────────────────────────────────────────────────── */
+    @media (max-width: 920px) {
+      section { padding: 68px 0; }
+      .wrap { padding: 0 28px; }
+      .hero-grid, .prob-grid, .arman-grid,
+      .result-grid, .price-grid, .founding-grid,
+      .form-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-col, .arman-photo-col { position: static; max-width: 340px; }
+      .prob-aside { padding-top: 0; }
+      .founding-aside { padding-top: 0; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .stat-row { grid-template-columns: 1fr; }
+      .fit-cols { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      section { padding: 52px 0; }
+      .steps { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .foot-inner { flex-direction: column; align-items: flex-start; }
+      .scene { padding: 24px 22px; }
+      .math-box { padding: 22px; }
+      .nav-inner { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Sticky nav ───────────────────────────────────────────────────── -->
+<nav id="sticky-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">ArmanLeads</a>
+    <div class="nav-links">
+      <a href="#arman">About Arman</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#objections">FAQs</a>
+    </div>
+    <a href="#contact" class="btn btn-pri btn-sm">Get my free audit →</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §0  HERO
+════════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="rise">
+        <!-- TODO: match ad copy verbatim per campaign -->
+        <p class="mono eyebrow" style="margin-bottom:24px;">For Des Moines Dentists · Founding Clients Only</p>
+
+        <h1 class="d">
+          Your schedule should be<br>
+          <em>full.</em> I can fix that.
+        </h1>
+
+        <p class="hero-sub">
+          I'm Arman — a medical student in Sulaymaniyah, Kurdistan.
+          I run Meta ads that put new patients in your chairs.
+          <strong>$697/month. No contract. 30-day money-back guarantee.</strong>
+          Five founding spots. No agency in the middle.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-pri">Get my free audit →</a>
+          <a href="#contact" class="btn btn-sec">Book a 20-min call</a>
+        </div>
+
+        <p class="hero-micro">
+          → Reply within 12 hours · No phone calls · Stripe-processed<br>
+          · 30-day money back · No contract · No sales pressure
+        </p>
+      </div>
+
+      <div class="hero-img-col rise" style="transition-delay:110ms;">
+        <div class="id-card">
+          <div class="id-card-photo" role="img" aria-label="Photo of Arman, founder of ArmanLeads, Sulaymaniyah, Kurdistan">
+            <!-- Replace this div's contents with: <img src="arman.jpg" alt="Arman, founder of ArmanLeads"> -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span class="id-card-photo-label">Add Arman's photo here<br>(replace this block with an &lt;img&gt; tag)</span>
+          </div>
+          <div class="id-card-foot">
+            <div class="id-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span>Sulaymaniyah, Kurdistan (Iraq)</span>
+            </div>
+            <div class="id-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L2 7h20l-6-4z"/></svg>
+              <span>AL-Kitab University — Medical School</span>
+            </div>
+            <div class="id-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <!-- Update this link with Arman's real LinkedIn URL -->
+              <a href="https://linkedin.com/in/arman" target="_blank" rel="noopener noreferrer">linkedin.com/in/arman</a>
+            </div>
+            <div class="id-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:arman@armanleads.com">arman@armanleads.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §1  THE PROBLEM
+════════════════════════════════════════════════════════════════════ -->
+<section id="problem" class="bg-2">
+  <div class="wrap">
+    <div class="prob-grid">
+
+      <div class="rise">
+        <p class="mono eyebrow">01 — The problem</p>
+        <h2 class="d-sm" style="margin-top:16px;">
+          You already know<br>something's off
+        </h2>
+
+        <ul class="prob-list">
+          <li>
+            <span class="pm">·</span>
+            <span>You hired an agency. They sent monthly reports full of impressions and click-through rates, and your schedule got harder to predict — not easier.</span>
+          </li>
+          <li>
+            <span class="pm">·</span>
+            <span>The practice downtown opened two years ago with a slicker website and a younger patient base. It bothers you more than you'd admit to anyone on staff.</span>
+          </li>
+          <li>
+            <span class="pm">·</span>
+            <span>A half-empty Tuesday costs you something real, and you know the math. Fixing it keeps getting pushed to next quarter, and the quarter after that.</span>
+          </li>
+          <li>
+            <span class="pm">·</span>
+            <span>You show up on Google if people already know your name. You don't appear when someone in Ankeny searches "dentist taking new patients" at 8 PM on a Sunday.</span>
+          </li>
+          <li>
+            <span class="pm">·</span>
+            <span>The last cold email you got promised "20+ new patients a month" with no proof, no specifics, and a $3,500 onboarding fee before they'd say anything concrete.</span>
+          </li>
+          <li>
+            <span class="pm">·</span>
+            <span>You've been pitched by at least 31 agencies this year. They all sound the same. You stopped opening those emails six months ago.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="prob-aside rise" style="transition-delay:100ms;">
+        <p style="font-size:15px; line-height:1.85; color:var(--text-mid); max-width:340px;">
+          Your practice is good. You're a skilled dentist who built something real.
+          The marketing around it has let you down.
+        </p>
+
+        <blockquote class="prob-pull">
+          "You're not frustrated about marketing. You're frustrated that it takes
+          this much mental energy to keep the chairs full."
+        </blockquote>
+
+        <div class="cta-gap">
+          <a href="#contact" class="btn btn-pri">Show me what I'm missing →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §2  COST OF DOING NOTHING
+════════════════════════════════════════════════════════════════════ -->
+<section id="cost">
+  <div class="wrap">
+
+    <div class="cost-head rise">
+      <p class="mono eyebrow">02 — The cost of doing nothing</p>
+      <h2 class="d-sm">
+        Des Moines searches for dentists<br>
+        <span class="num">1,847</span> times a month
+      </h2>
+      <p class="sub">
+        Most of those searches end at the first practice with a visible ad
+        and an open slot. The math in Polk County:
+      </p>
+    </div>
+
+    <div class="stat-row rise">
+      <div class="stat-cell">
+        <span class="stat-big num">1,847</span>
+        <span class="stat-label">Monthly local searches for "dentist near me" and related terms in the Des Moines metro</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-big num">~23</span>
+        <span class="stat-label">New patients a well-run Meta campaign converts from those searches each month</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-big num">$321</span>
+        <span class="stat-label">Average first-year revenue per new patient in a general Iowa dental practice</span>
+      </div>
+    </div>
+
+    <div class="math-box rise">
+      <p class="mono eyebrow" style="margin-bottom:16px; color:var(--text-mid);">The monthly math</p>
+      <div class="math-row">
+        <span class="math-label">New patients per month without active paid ads (organic + referral only)</span>
+        <span class="math-val num">3–5</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">New patients per month with targeted Meta ads running</span>
+        <span class="math-val num">18–26</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Difference × first-year patient value ($321)</span>
+        <span class="math-val num">~$4,815–$6,741</span>
+      </div>
+      <div class="math-row total">
+        <span class="math-label">Revenue leaving per month while you're deciding</span>
+        <span class="math-val num">$7,412</span>
+      </div>
+    </div>
+
+    <p class="cost-note rise">
+      → Estimates scaled from ADA 2023 national practice data and Google Keyword Planner search volumes for Polk County, Iowa.
+      Individual results vary by specialty, ad spend, and appointment availability. Directional figures, not guarantees.
+    </p>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §3  WHO IS ARMAN
+════════════════════════════════════════════════════════════════════ -->
+<section id="arman" class="bg-2">
+  <div class="wrap">
+    <div class="arman-grid">
+
+      <div class="arman-photo-col rise">
+        <div class="arman-id-card">
+          <div class="arman-photo-box" role="img" aria-label="Photo of Arman, founder of ArmanLeads, AL-Kitab University, Sulaymaniyah">
+            <!-- Replace this div's contents with: <img src="arman-bio.jpg" alt="Arman at AL-Kitab University, Sulaymaniyah"> -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span class="id-card-photo-label" style="padding:0 24px; text-align:center;">Add Arman's photo here</span>
+          </div>
+          <div class="arman-card-foot">
+            <div class="arman-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span>Sulaymaniyah, Kurdistan (Iraq)</span>
+            </div>
+            <div class="arman-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8L2 7h20l-6-4z"/></svg>
+              <span>AL-Kitab University — Medical School</span>
+            </div>
+            <div class="arman-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <a href="https://linkedin.com/in/arman" target="_blank" rel="noopener noreferrer">linkedin.com/in/arman</a>
+            </div>
+            <div class="arman-row">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:arman@armanleads.com">arman@armanleads.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rise" style="transition-delay:100ms;">
+        <p class="mono eyebrow">03 — Who's writing this</p>
+        <h2 class="d-sm" style="margin-top:16px;">
+          A medical student<br>from Iraq. Yes, really.
+        </h2>
+
+        <div class="arman-body">
+          <p>
+            I'm a medical student at AL-Kitab University in Sulaymaniyah, Kurdistan,
+            and I run dental marketing campaigns for American practices. You're already
+            asking why you should take that seriously.
+            <strong>Good. That's the right reaction.</strong>
+          </p>
+
+          <div class="arman-quote">
+            "I'm new to the US market. The only way I build a client list here is to
+            make the offer hard to say no to, then deliver. There's no other path."
+          </div>
+
+          <p>
+            Two years studying how dental practices acquire patients — what the search
+            data looks like in mid-sized American cities, which Meta audiences convert
+            on dental ads, what copy works on cold traffic versus someone who already
+            clicked your profile. I ran campaigns with my own money before I asked
+            anyone else to spend theirs.
+          </p>
+
+          <p>
+            I'm not a 12-person agency that hands your account to a junior after
+            onboarding. <strong>I do the work. You talk directly to me.</strong>
+            Emails answered within 12 hours, not 3 business days.
+          </p>
+
+          <p>
+            You have no way to drive over and shake my hand. That's exactly why the
+            offer is structured this way: 50% off the management fee, 30-day
+            money-back, month-to-month. <strong>The financial risk is almost zero.</strong>
+            That's deliberate.
+          </p>
+
+          <p>
+            Write to me at <a href="mailto:arman@armanleads.com">arman@armanleads.com</a>
+            before you commit to anything. My LinkedIn is public. Ask whatever you need.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §4  WHAT THE AUDIT LOOKS LIKE (proof of work)
+════════════════════════════════════════════════════════════════════ -->
+<section id="audit-preview">
+  <div class="wrap">
+
+    <div class="audit-head rise">
+      <p class="mono eyebrow">04 — What your free audit looks like</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        You get a real document,<br>not a sales call
+      </h2>
+      <p class="sub" style="margin-top:16px; max-width:580px;">
+        Within 48 hours of submitting the form, you receive a written audit.
+        Below is a representative sample of what it covers.
+      </p>
+    </div>
+
+    <div class="audit-preview rise">
+      <div class="audit-preview-header">
+        <span class="audit-preview-title">Sample Audit — Des Moines General Practice · Search Visibility Report</span>
+        <span class="audit-preview-meta">Section 1 of 4 · Keyword Gap Analysis</span>
+      </div>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Search term</th>
+            <th>Monthly searches (Polk Co.)</th>
+            <th>Your current rank</th>
+            <th>Top competitor rank</th>
+            <th>Visibility gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-kw">dentist near me</td>
+            <td class="td-vol num">612</td>
+            <td>Not in top 20</td>
+            <td>#3 (paid ad)</td>
+            <td><span class="audit-gap-tag gap-hi">High</span></td>
+          </tr>
+          <tr>
+            <td class="td-kw">family dentist des moines</td>
+            <td class="td-vol num">284</td>
+            <td>#14 (organic)</td>
+            <td>#1 (paid ad)</td>
+            <td><span class="audit-gap-tag gap-hi">High</span></td>
+          </tr>
+          <tr>
+            <td class="td-kw">dentist taking new patients</td>
+            <td class="td-vol num">198</td>
+            <td>Not ranking</td>
+            <td>#2 (paid ad)</td>
+            <td><span class="audit-gap-tag gap-hi">High</span></td>
+          </tr>
+          <tr>
+            <td class="td-kw">teeth cleaning ankeny</td>
+            <td class="td-vol num">143</td>
+            <td>#8 (organic)</td>
+            <td>#4 (organic)</td>
+            <td><span class="audit-gap-tag gap-mid">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="td-kw">emergency dentist des moines</td>
+            <td class="td-vol num">97</td>
+            <td>#6 (organic)</td>
+            <td>#1 (paid ad)</td>
+            <td><span class="audit-gap-tag gap-mid">Medium</span></td>
+          </tr>
+          <tr>
+            <td class="td-kw">pediatric dentist west des moines</td>
+            <td class="td-vol num">74</td>
+            <td>#3 (organic)</td>
+            <td>#5 (organic)</td>
+            <td><span class="audit-gap-tag gap-lo">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="audit-preview-foot">
+        <span>Sample data · Your actual audit uses live Keyword Planner data for your specific practice location</span>
+        <span>+ 3 more sections: Meta audience analysis · Campaign structure recommendation · 90-day forecast</span>
+      </div>
+    </div>
+
+    <p class="audit-note rise">
+      The full audit also covers: what comparable Des Moines practices are spending on Meta,
+      which audiences convert for dental in your zip codes, and a recommended first campaign
+      structure with estimated cost-per-lead. No charge. No obligation to move forward.
+    </p>
+
+    <div style="margin-top:28px;" class="rise">
+      <a href="#contact" class="btn btn-pri">Get my free audit →</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §5  THE FEELING / TUESDAY SCENE
+════════════════════════════════════════════════════════════════════ -->
+<section id="result" class="bg-2">
+  <div class="wrap">
+
+    <div class="scene-head rise">
+      <p class="mono eyebrow">05 — What the result feels like</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        The thing you're<br>paying for
+      </h2>
+    </div>
+
+    <div class="scene rise">
+      <span class="scene-time">Tuesday · 9:14 AM</span>
+      <p>
+        You walk in and your front desk has already returned Monday's last
+        three voicemails. The morning's first cleaning is in chair two. Four new
+        patient consults are booked for Thursday — none of which existed last
+        Wednesday. One found you through an Instagram ad. She'd never heard of
+        your practice before Friday. Nobody is panicking. You get your coffee
+        and look at the week ahead instead of dreading it.
+      </p>
+    </div>
+
+    <div class="scene rise">
+      <span class="scene-time">That evening · 6:03 PM</span>
+      <p>
+        You leave on time. Your spouse asks how it went. "Good week" — and you
+        mean it, not as a way to close the conversation, but because it's true.
+        Q3 is fine. The big practice downtown is downtown. Your practice is yours,
+        it's full, and it's growing at a pace you can manage.
+      </p>
+    </div>
+
+    <div class="result-grid">
+      <div class="rise">
+        <p class="mono eyebrow" style="margin-bottom:18px; color:var(--text-mid);">What the service includes</p>
+        <ul class="del-list">
+          <li class="del-item">
+            <span class="da">→</span>
+            <span>Meta ad campaigns (Facebook + Instagram) — copy, creative direction, audience targeting, bid strategy. Built and managed by me.</span>
+          </li>
+          <li class="del-item">
+            <span class="da">→</span>
+            <span>A landing page or direct link to your booking system, configured to capture traffic — not a homepage that loses it</span>
+          </li>
+          <li class="del-item">
+            <span class="da">→</span>
+            <span>Weekly email: what ran, what the numbers showed, what I'm changing next. No dashboard login. Plain English.</span>
+          </li>
+          <li class="del-item">
+            <span class="da">→</span>
+            <span>Free initial audit showing local search volumes and visibility gaps — whether or not you move forward</span>
+          </li>
+          <li class="del-item">
+            <span class="da">→</span>
+            <span>Direct email access to me, answered within 12 hours on weekdays</span>
+          </li>
+        </ul>
+
+        <div style="margin-top:28px;">
+          <a href="#contact" class="btn btn-pri">Get my free audit →</a>
+        </div>
+      </div>
+
+      <div class="result-aside rise" style="transition-delay:100ms;">
+        <p>
+          Before committing, you receive a free written audit showing what
+          search terms your area uses, where your visibility gaps are, and
+          what a realistic campaign looks like for your practice.
+        </p>
+        <p>
+          No upsell at the end. If the numbers don't suggest it's a good fit,
+          I'll say so. The audit takes me a couple of hours — I'd rather spend
+          them on something that works for both of us.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §6  FIT CHECK
+════════════════════════════════════════════════════════════════════ -->
+<section id="fit">
+  <div class="wrap">
+
+    <div class="fit-head rise">
+      <p class="mono eyebrow">06 — Fit check</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        Who this is for.<br>Who it isn't.
+      </h2>
+      <p class="sub" style="margin-top:16px; max-width:540px;">
+        Filtering out the wrong clients is the only way I keep results
+        consistent for the right ones.
+      </p>
+    </div>
+
+    <div class="fit-cols rise">
+      <div class="fit-col">
+        <div class="fit-col-head">Good fit if →</div>
+        <ul class="fit-list">
+          <li>
+            <span class="fy">→</span>
+            <span>You own a general dental practice in Des Moines or Polk County with at least 2 treatment chairs</span>
+          </li>
+          <li>
+            <span class="fy">→</span>
+            <span>You have capacity for 12–26 new patients a month — an empty schedule is only useful if the team can absorb growth</span>
+          </li>
+          <li>
+            <span class="fy">→</span>
+            <span>You'll give paid ads 60–90 days to find what converts before judging results</span>
+          </li>
+          <li>
+            <span class="fy">→</span>
+            <span>You have a functional booking system — phone, online, or both — with someone answering it</span>
+          </li>
+          <li>
+            <span class="fy">→</span>
+            <span>You're comfortable with a $600–$1,200/month ad budget paid directly to Meta, separate from my fee</span>
+          </li>
+        </ul>
+      </div>
+      <div class="fit-col">
+        <div class="fit-col-head">Probably not if →</div>
+        <ul class="fit-list">
+          <li>
+            <span class="fn">·</span>
+            <span>You're already booked 6+ weeks out and have no hiring plans</span>
+          </li>
+          <li>
+            <span class="fn">·</span>
+            <span>You need guaranteed patient counts in the first 30 days — month one is for learning your market</span>
+          </li>
+          <li>
+            <span class="fn">·</span>
+            <span>You want SEO, video production, reputation management, and social posting bundled in</span>
+          </li>
+          <li>
+            <span class="fn">·</span>
+            <span>You're outside Polk County or the Des Moines metro — I'm focused there for now</span>
+          </li>
+          <li>
+            <span class="fn">·</span>
+            <span>You need contracts and SLAs from a registered US entity before considering any engagement</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §7  HOW IT WORKS
+════════════════════════════════════════════════════════════════════ -->
+<section id="process" class="bg-2">
+  <div class="wrap">
+
+    <div class="proc-head rise">
+      <p class="mono eyebrow">07 — How it works</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        Four steps. No 3-hour<br>onboarding calls.
+      </h2>
+    </div>
+
+    <div class="steps rise">
+      <div class="step">
+        <span class="step-num">01 — Audit</span>
+        <h3>I look at what you have</h3>
+        <p>You fill out a short form. I review your online presence, local search data, and what comparable Des Moines practices run on Meta. Written summary within 48 hours — whether or not you move forward.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02 — Build</span>
+        <h3>I set up the campaigns</h3>
+        <p>I write the ad copy, set the creative direction, configure the Meta Pixel on your booking page, and build the audiences. Takes 4–5 days. You see the first campaign before it goes live.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03 — Run</span>
+        <h3>Ads run. I watch the data.</h3>
+        <p>The campaign runs. I monitor performance daily, adjust bids and creative when the data says to, and send a plain-English summary every Friday. No dashboard logins. Just a useful email.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04 — Report</span>
+        <h3>Monthly review, no surprises</h3>
+        <p>At the start of each month: what ran, what it cost, how many leads came in, what converted, what I'm changing next. If the numbers are off, you hear it from me — not after you've already noticed.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;" class="rise">
+      <a href="#contact" class="btn btn-pri">Get my free audit →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §8  OBJECTIONS
+════════════════════════════════════════════════════════════════════ -->
+<section id="objections">
+  <div class="wrap">
+
+    <div class="obj-head rise">
+      <p class="mono eyebrow">08 — Questions you're already asking</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        Answered plainly,<br>not buried in an FAQ
+      </h2>
+    </div>
+
+    <div class="obj-list">
+
+      <div class="obj rise">
+        <h3>"Why should I trust a medical student from Iraq?"</h3>
+        <p>
+          You shouldn't trust me because I said so. The offer is built so that
+          trust is almost optional in the first 30 days: you pay once, you receive
+          a real audit, and if anything I deliver doesn't match what's written on
+          this page, you get your money back — no explanation required.
+          <strong>The guarantee is the trust mechanism, not my credentials.</strong>
+          My email and LinkedIn are public, my university is searchable, and I'll
+          do a 20-minute call before you pay anything. If something feels wrong
+          after that, don't proceed.
+        </p>
+      </div>
+
+      <div class="obj rise">
+        <h3>"What if I pay and you disappear?"</h3>
+        <p>
+          Stripe processes the payment — a US company with US buyer protections.
+          The subscription charges monthly, not as a 6-month lump sum.
+          <strong>Your first payment is one month's management fee, nothing else.</strong>
+          If I go quiet after taking your money, you dispute the charge with Stripe.
+          I don't disappear — this business is how I build a career, and I have
+          everything to lose by behaving badly — but the mechanism is there.
+        </p>
+      </div>
+
+      <div class="obj rise">
+        <h3>"I've tried Meta ads before. They didn't work."</h3>
+        <p>
+          Almost always one of three causes: the audience was too broad, the ad
+          sent traffic to a homepage instead of a direct booking form, or the
+          budget was under $400/month and the algorithm never had enough data.
+          <strong>The free audit will show you exactly what went wrong</strong>
+          — if you've run campaigns before — and what a different setup looks like.
+          Read it and decide.
+        </p>
+      </div>
+
+      <div class="obj rise">
+        <h3>"Will I be locked into a contract?"</h3>
+        <p>
+          No contract. Month-to-month. Cancel by emailing me. Two weeks' notice
+          is appreciated so I can wind down campaigns cleanly, but nothing holds
+          you past the current billing month.
+          <strong>The only real commitment is the 30-day window where the
+          campaigns are actively being built</strong> — and that month is covered
+          by the money-back guarantee.
+        </p>
+      </div>
+
+      <div class="obj rise">
+        <h3>"Are you going to upsell me on SEO, websites, and social media?"</h3>
+        <p>
+          No. I do one thing: Meta ads that bring new patients to dental practices
+          in Des Moines. If you ask about SEO or websites, I'll point you toward
+          people better placed to help.
+          <strong>Reliable at one thing beats vaguely involved in everything.</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §9  PRICING + GUARANTEE
+════════════════════════════════════════════════════════════════════ -->
+<section id="pricing" class="bg-2">
+  <div class="wrap">
+
+    <div class="price-head rise">
+      <p class="mono eyebrow">09 — Pricing</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        Exactly what it costs,<br>and why
+      </h2>
+    </div>
+
+    <div class="price-grid">
+
+      <div class="rise">
+        <div class="price-card">
+          <div class="price-hd">
+            <p class="price-ey">Founding Client Rate</p>
+            <div class="price-line">
+              <span class="price-cur">$</span>
+              <span class="price-amt num">697</span>
+              <span class="price-per">/month</span>
+            </div>
+            <span class="price-was num">$1,394/month after founding period</span>
+          </div>
+          <div class="price-body">
+            <ul class="price-lines">
+              <li>
+                <span class="pm2">→</span>
+                <span class="pl">Meta ad campaign management (Facebook + Instagram)</span>
+                <span class="pv">included</span>
+              </li>
+              <li>
+                <span class="pm2">→</span>
+                <span class="pl">Practice audit + local search analysis</span>
+                <span class="pv">free</span>
+              </li>
+              <li>
+                <span class="pm2">→</span>
+                <span class="pl">Ad creative, copy, audience setup</span>
+                <span class="pv">included</span>
+              </li>
+              <li>
+                <span class="pm2">→</span>
+                <span class="pl">Weekly email performance summary</span>
+                <span class="pv">included</span>
+              </li>
+              <li>
+                <span class="pm2">→</span>
+                <span class="pl">Monthly strategy review</span>
+                <span class="pv">included</span>
+              </li>
+              <li>
+                <span class="pm2">·</span>
+                <span class="pl">Ad spend (paid directly to Meta by you)</span>
+                <span class="pv num">$600–$1,200/mo</span>
+              </li>
+            </ul>
+
+            <div class="loss-box">
+              Right now, roughly <strong class="num">$247/day</strong> in patients
+              search Des Moines, find a competitor with a running ad, and book there.
+              That's the math from the section above.
+            </div>
+
+            <a href="#contact" class="btn btn-pri" style="width:100%;justify-content:center;">
+              Get my free audit →
+            </a>
+
+            <p class="price-micro">
+              → No contract · Cancel anytime · Stripe-processed<br>
+              · 30-day money-back guarantee · Reply within 12 hours
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rise guarantee-wrap" style="transition-delay:100ms;">
+
+        <!-- Circular stamp guarantee -->
+        <div class="stamp-outer">
+          <svg class="stamp-svg" viewBox="0 0 160 160" aria-label="30-day money-back guarantee">
+            <!-- Outer dashed ring -->
+            <circle cx="80" cy="80" r="72" fill="none" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Inner ring -->
+            <circle cx="80" cy="80" r="58" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.35"/>
+            <!-- Center content -->
+            <text x="80" y="52" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="42" font-weight="300" fill="var(--text)" letter-spacing="-2">30</text>
+            <text x="80" y="70" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="var(--text-mid)" letter-spacing="2" text-transform="uppercase">DAY</text>
+            <text x="80" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="var(--accent)" letter-spacing="2.5">MONEY BACK</text>
+            <text x="80" y="104" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="var(--text-low)" letter-spacing="2">GUARANTEE</text>
+            <!-- Decorative marks -->
+            <line x1="56" y1="114" x2="104" y2="114" stroke="var(--border)" stroke-width="1"/>
+            <text x="80" y="126" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6.5" fill="var(--text-low)" letter-spacing="1.5">ONE EMAIL · NO FORMS</text>
+          </svg>
+        </div>
+
+        <div class="stripe-box">
+          <span class="sm">→</span>
+          <span>Payments run through <strong>Stripe</strong> — a US company used by millions of businesses. Charged once a month. No surprises.</span>
+        </div>
+
+        <div class="ad-note">
+          <p style="font-weight:500;color:var(--text);margin-bottom:7px;font-size:13px;">Ad spend is separate from my fee</p>
+          <p>You pay Meta directly. I recommend starting at <strong class="num">$800/month</strong> — enough data for the algorithm to optimize within 3–4 weeks without burning budget in the learning phase.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §10  FOUNDING CLIENT OFFER
+════════════════════════════════════════════════════════════════════ -->
+<section id="founding" class="bg-inv">
+  <div class="wrap">
+    <div class="founding-grid">
+
+      <div class="rise">
+        <p class="mono" style="color:rgba(244,239,230,0.38);margin-bottom:16px;">09 — The founding offer</p>
+        <h2 class="d-sm" style="color:var(--bg);">
+          Why the rate is half<br>what it will be
+        </h2>
+
+        <div class="founding-body">
+          <p>
+            I don't have a list of American dental clients to point you to.
+            I have a process and a track record running paid campaigns —
+            not yet in front of a Des Moines dentist.
+          </p>
+          <p>
+            Five founding clients at <strong style="color:var(--bg);" class="num">$697/month</strong>
+            instead of the full rate of <strong style="color:var(--bg);" class="num">$1,394/month</strong>.
+            Not a discount dangled to close a sale. A rate that reflects where I am.
+          </p>
+          <p>
+            In return: let me use the results — with your name, if you agree — when
+            I talk to the next practice. You get half-price service from someone with
+            every incentive to make you successful. I get a proof point I can stand behind.
+          </p>
+        </div>
+
+        <div class="founding-offer">
+          <ul class="founding-list">
+            <li>
+              <span class="fm">→</span>
+              <span>Management fee locked at <strong style="color:var(--bg);" class="num">$697/month</strong> for as long as you're a client</span>
+            </li>
+            <li>
+              <span class="fm">→</span>
+              <span>Full-rate service — no corners cut on strategy, creative, or reporting</span>
+            </li>
+            <li>
+              <span class="fm">→</span>
+              <span>30-day money-back, no questions</span>
+            </li>
+            <li>
+              <span class="fm">→</span>
+              <span>Month-to-month, no contract</span>
+            </li>
+            <li>
+              <span class="fm">→</span>
+              <span>Direct access to me — not an account manager, not a ticket system</span>
+            </li>
+          </ul>
+
+          <a href="#contact" class="btn btn-inv">Get my free audit →</a>
+        </div>
+      </div>
+
+      <div class="founding-aside rise" style="transition-delay:110ms;">
+        <div class="spots-badge">
+          <span class="spots-num num">5</span>
+          <span class="spots-label">Founding spots total</span>
+          <p>
+            Limiting to 5 so each practice gets the attention the work requires.
+            Once filled, the rate goes to $1,394/month —
+            no exceptions, no grandfathering.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     §11  FINAL FORM
+════════════════════════════════════════════════════════════════════ -->
+<section id="contact" class="bg-2">
+  <div class="wrap">
+
+    <div class="form-head rise">
+      <p class="mono eyebrow">10 — Start here</p>
+      <h2 class="d-sm" style="margin-top:16px;">
+        Get your free audit.<br>Three fields. 48 hours.
+      </h2>
+      <p class="sub">
+        I'll send a written report showing your area's search data and where
+        your practice has visibility gaps. Free. No follow-up pitch unless you ask.
+      </p>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="rise">
+        <!-- Form posts to /api/submit — wire to Formspree, Resend, or equivalent endpoint -->
+        <form id="audit-form" action="/api/submit" method="POST">
+
+          <div class="form-group">
+            <label class="form-label" for="name">Your name</label>
+            <input class="form-input" type="text" id="name" name="name"
+              placeholder="Dr. Sarah Mitchell" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Your email</label>
+            <input class="form-input" type="email" id="email" name="email"
+              placeholder="sarah@mitchelldental.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="practice">Practice name</label>
+            <input class="form-input" type="text" id="practice" name="practice"
+              placeholder="Mitchell Family Dentistry" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="website">
+              Practice website
+              <span class="opt-tag">optional</span>
+            </label>
+            <input class="form-input opt" type="url" id="website" name="website"
+              placeholder="mitchelldental.com" autocomplete="url">
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn-pri" id="submit-btn" style="width:100%;justify-content:center;padding:15px 26px;font-size:15px;">
+              Get my free audit →
+            </button>
+            <p class="form-micro">
+              → Reply within 12 hours · No phone calls · Stripe-processed<br>
+              · 30-day money back · No contract · No sales pressure
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="rise" style="transition-delay:100ms;">
+
+        <p class="mono eyebrow" style="margin-bottom:16px; color:var(--text-mid);">What happens after you submit</p>
+        <div class="next-timeline">
+          <div class="next-step">
+            <span class="next-num">01</span>
+            <span class="next-text"><strong>Within 12 hours:</strong> I confirm receipt and ask one or two clarifying questions if I need them</span>
+          </div>
+          <div class="next-step">
+            <span class="next-num">02</span>
+            <span class="next-text"><strong>Within 48 hours:</strong> You receive the full written audit — keyword gaps, competitor ad analysis, campaign recommendation</span>
+          </div>
+          <div class="next-step">
+            <span class="next-num">03</span>
+            <span class="next-text"><strong>Your call:</strong> Read it. If it makes sense, we talk. If it doesn't, keep the audit.</span>
+          </div>
+        </div>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span class="divider-label">or skip the form</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="call-box">
+          <h3>Prefer a conversation first?</h3>
+          <p>
+            Book a 20-minute call. You ask what you need to ask, I answer.
+            No deck, no demo, no close.
+          </p>
+          <!-- Replace href with real Calendly or booking link -->
+          <a href="#" class="btn btn-sec" style="display:block;text-align:center;">
+            Book a 20-min call →
+          </a>
+          <p class="call-note">No charge · Video or voice · No agenda beyond your questions</p>
+        </div>
+
+        <div class="email-box">
+          <p class="ebox-label">Write me directly</p>
+          <a href="mailto:arman@armanleads.com">arman@armanleads.com</a>
+          <p class="ebox-note">I read every email myself. Reply within 12 hours.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <span class="foot-brand">ArmanLeads</span>
+      <nav class="foot-nav" aria-label="Footer navigation">
+        <a href="mailto:arman@armanleads.com">arman@armanleads.com</a>
+        <a href="https://linkedin.com/in/arman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="#contact">Start here</a>
+      </nav>
+      <span class="foot-copy">Sulaymaniyah, Kurdistan · <span class="num">2025</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav — show after scrolling past hero
+  (function () {
+    const nav = document.getElementById('sticky-nav');
+    const hero = document.getElementById('hero');
+    let shown = false;
+
+    function onScroll() {
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      if (!shown && heroBottom < 0) {
+        nav.classList.add('show');
+        shown = true;
+      } else if (shown && heroBottom >= 0) {
+        nav.classList.remove('show');
+        shown = false;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // Scroll-triggered fade-and-rise
+  (function () {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.06, rootMargin: '0px 0px -32px 0px' }
+    );
+    document.querySelectorAll('.rise').forEach((el) => obs.observe(el));
+  })();
+
+  // Form — placeholder submit handler
+  document.getElementById('audit-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    // TODO: POST to /api/submit — wire to Formspree, Resend, or equivalent
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = "Sent — I'll be in touch within 12 hours.";
+    btn.disabled = true;
+    btn.style.background = 'var(--text)';
+    btn.style.borderColor = 'var(--text)';
+  });
+</script>
+
+</body>
+</html>
